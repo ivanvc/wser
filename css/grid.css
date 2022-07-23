@@ -1,0 +1,28 @@
+h2 {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.controls {
+  border-bottom: 1px solid black;
+}
+
+.controls .slides {
+  border-right: 1px solid black;
+}
+
+.controls .control {
+  border-right: 1px solid black;
+}
+
+.controls .control:last-child {
+  border-right: 0;
+}
+
+.content {
+  border-bottom: 1px solid black;
+}
+
+.content .caption {
+  border-right: 1px solid black;
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Extreme Weather effects on the Western States Endurance Run</title>
+    <link rel="stylesheet" href="css/main.css"></link>
+    <link rel="stylesheet" href="css/grid.css"></link>
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  </head>
+  <body>
+
+ <div id="slides">
+      <section id="the-distribution">
+        <h2>
+          The Distribution
+        </h2>
+
+        <div class="controls">
+          <div class="slides control">
+            <button disabled>←</button>
+            <button disabled>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>→</button>
+          </div>
+
+          <div class="year-slider control">
+            <span>Year</span>
+            <input type="range" min="2009" max="2021" value="2009" class="slider" id="histYear" list="tickmarks">
+            <span id="histYearValue">All</span>
+          </div>
+
+          <div class="control">
+            <span>Gender</span>
+            <label><input id="histGenderAll" type="radio" name="histgender" value="All" checked />All</label>
+            <label><input id="histGenderFemale" type="radio" name="histgender" value="F" />Female</label>
+            <label><input id="histGenderMale" type="radio" name="histgender" value="M" />Male</label>
+            </span>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="caption">
+            <p>
+            We will start by analyzing the finish times across all of the years in the dataset, for both genders.
+            </p>
+
+            <p>
+            We can do the following observations. First, that the race wasn't held in 2020 due to the COVID-19 pandemic, so there's no data for that year. Second, that the female group is underrepresented, therefore, we will focus the rest of the analysis on males.
+            </p>
+
+            <p>
+            Finally, we can see that the distribution of the data is bimodal. The explanation is that we have different groups of runners; first, the elite runners which are the minority of the field, making it a long tail on the left, usually finishing under twenty hours. Then, the rest of the field is the amateur runners, with the first group of them trying to run a hundred miles under twenty-four hours (we will refer to them as the sub-24 hour runners). These two groups make the first right-skewed normal distribution. After that, we see the runners that just want to finish within the race limit of thirty hours. This group makes the second right-skewed normal distribution.
+            </p>
+          </div>
+
+          <div class="chart">
+            <svg id="hist"></svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="finishing-the-hundred-miler" style="display: none">
+        <h2>
+          Finishing the Hundred Miler
+        </h2>
+        <div class="controls">
+          <div class="control slides">
+            <button>←</button>
+            <button>1</button>
+            <button disabled>2</button>
+            <button>3</button>
+            <button>→</button>
+          </div>
+
+          <div class="year-slider control">
+            <span>Year</span>
+            <input type="range" min="2009" max="2021" value="2009" class="slider" id="finishTimesYear" list="tickmarks">
+            <span id="finishTimesYearValue">All</span>
+          </div>
+
+          <div class="control">
+            <span>Gender</span>
+            <label><input id="finishTimesGenderAll" type="radio" name="finishTimesgender" value="All" checked />All</label>
+            <label><input id="finishTimesGenderFemale" type="radio" name="finishTimesgender" value="F" />Female</label>
+            <label><input id="finishTimesGenderMale" type="radio" name="finishTimesgender" value="M" />Male</label>
+            </span>
+          </div>
+
+          <div class="control">
+            <span>Temperature</span>
+            <label><input id="finishTimesTempHigh" type="radio" name="finishTimestemp" value="Temp.High" checked />High</label>
+            <label><input id="finishTimesTempLow" type="radio" name="finishTimestemp" value="Temp.Low" />Low</label>
+            <label><input id="finishTimesTempDiff" type="radio" name="finishTimestemp" value="Diff" />Difference (High - Low)</label>
+            </span>
+          </div>
+        </div>
+
+
+        <div class="content">
+          <div class="caption">
+            <p>
+            Now, we will analyze the finish time vs. the overall place.
+            </p>
+
+            <p>
+            We can immediately notice that finishing times are impacted when as the temperature gets higher, and it's also evident that the best overall times are with the lowest temperature.
+            </p>
+
+            <p>
+            With extreme weather conditions, in other words, as the temperature difference is greater, we can see that the finishing times are affected but not significantly, with the greatest difference in right in the middle. However, 2021, when the difference is considerable (28°F), has the worst overall performance.
+            </p>
+
+            <p>
+            We don't We can make the observation, that even though the finish time is affected by the heat, also the finish time of previous runners, also has an impact on their finish time, as 2013, which is the warmest, doesn't have the worst overall finish times.
+            </p>
+          </div>
+
+          <div class="chart">
+            <svg id="finishtimes"></svg>
+          </div>
+        </div>
+
+      </section>
+
+      <section id="finish-rate" style="display:none">
+        <h2>
+          Finish Rate
+        </h2>
+        <div class="controls">
+          <div class="control slides">
+            <button>←</button>
+            <button>1</button>
+            <button>2</button>
+            <button disabled>3</button>
+            <button disabled>→</button>
+          </div>
+
+          <div class="control">
+            <label><input id="finishRateF" type="radio" name="finishRate" value="F" checked />Finish Rate</label>
+            <label><input id="finishRateSub24" type="radio" name="finishRate" value="S" />Sub-24h Rate</label>
+            </span>
+          </div>
+
+          <div class="control">
+            <span>Gender</span>
+            <label><input id="finishRateGenderAll" type="radio" name="finishRategender" value="All" checked />All</label>
+            <label><input id="finishRateGenderFemale" type="radio" name="finishRategender" value="F" />Female</label>
+            <label><input id="finishRateGenderMale" type="radio" name="finishRategender" value="M" />Male</label>
+            </span>
+          </div>
+
+          <div class="control">
+            <span>Temperature</span>
+            <label><input id="finishRateTempHigh" type="radio" name="finishRatetemp" value="Temp.High" checked />High</label>
+            <label><input id="finishRateTempLow" type="radio" name="finishRatetemp" value="Temp.Low" />Low</label>
+            <label><input id="finishRateTempDiff" type="radio" name="finishRatetemp" value="Diff" />Difference (High - Low)</label>
+            </span>
+          </div>
+
+        </div>
+
+        <div class="content">
+          <div class="caption">
+            <p>
+            Now, we will analyze the finish rate across the different years from the dataset.
+            </p>
+
+            <p>
+            Again, we compare the temperature conditions, and notice that as the warmer it gets, the worst success rate of finishing the race. And we notice that with minimal temperature difference, the odds of finishing are greater, except for an outlier in 2015.
+            </p>
+
+            <p>
+            As we previously discussed, there's a great number of runners that have the goal of finishing in less than 24 hours. We see that the lower that the highest temperature is, the better the performance and the odds of achieving the goal. An this affirmation is considerably greater for the females of the race.
+            </p>
+
+            <p>
+            Across the differnt slides of this analysis, we notice that the vast majority of the participants are males, they drive the overall charts. Selecting, and analyzing the females in this visualizaiton sheds a different story, with the best sub 24 hour success in 2015, the year with the lowest temperature.
+            </p>
+          </div>
+
+          <div class="chart">
+            <svg id="finishratio"></svg>
+          </div>
+        </div>
+      </section>
+
+      <div class="tooltip" id="tooltip" style="position:absolute;opacity:0">
+      </div>
+    </div>
+
+    <script src='https://d3js.org/d3.v7.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.5.1/d3-annotation.min.js'></script>
+    <script src='js/layout.js'></script>
+    <script src='js/main.js'></script>
+
+  </body>
+</html>
