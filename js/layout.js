@@ -2,49 +2,50 @@ var hideAllSections = function() {
   document.querySelectorAll('section').forEach(function(x) {
     x.style.display = 'none'
   })
+  d3.selectAll('section')
+    .transition()
+    .duration(50)
+    .style('opacity', '0')
+    .style('display', 'none')
   document.getElementById('tooltip').style.opacity = '0'
+}
+
+var showSection = function(sect) {
+  hideAllSections()
+  d3.select('#' + sect)
+    .transition()
+    .duration(150)
+    .style('opacity', '1')
+    .style('display', 'block')
+  window.location.hash = sect
 }
 
 document.querySelectorAll('.slides').forEach(function(s) {
   s.querySelector('button:nth-child(2)').onclick = function(x) {
-    hideAllSections()
-    document.getElementById('the-distribution').style.display = 'block'
-    window.location.hash = 'the-distribution'
+    showSection('the-distribution')
   }
   s.querySelector('button:nth-child(3)').onclick = function(x) {
-    hideAllSections()
-    document.getElementById('finishing-the-hundred-miler').style.display = 'block'
-    window.location.hash = 'finishing-the-hundred-miler'
+    showSection('finishing-the-hundred-miler')
   }
   s.querySelector('button:nth-child(4)').onclick = function(x) {
-    hideAllSections()
-    document.getElementById('finish-rate').style.display = 'block'
-    window.location.hash = 'finish-rate'
+    showSection('finish-rate')
   }
 })
 
 document.querySelector('#the-distribution .slides button:last-child').onclick = function(x) {
-  hideAllSections()
-  document.getElementById('finishing-the-hundred-miler').style.display = 'block'
-  window.location.hash = 'finishing-the-hundred-miler'
+  showSection('finishing-the-hundred-miler')
 }
 
 document.querySelector('#finishing-the-hundred-miler .slides button:first-child').onclick = function(x) {
-  hideAllSections()
-  document.getElementById('the-distribution').style.display = 'block'
-  window.location.hash = 'the-distribution'
+  showSection('the-distribution')
 }
 
 document.querySelector('#finishing-the-hundred-miler .slides button:last-child').onclick = function(x) {
-  hideAllSections()
-  // window.location.hash = 'finish-rate'
-  document.getElementById('finish-rate').style.display = 'block'
+  showSection('finish-rate')
 }
 
 document.querySelector('#finish-rate .slides button:first-child').onclick = function(x) {
-  hideAllSections()
-  document.getElementById('finishing-the-hundred-miler').style.display = 'block'
-  window.location.hash = 'finishing-the-hundred-miler'
+  showSection('finishing-the-hundred-miler')
 }
 
 function init() {
