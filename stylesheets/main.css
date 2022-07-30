@@ -175,6 +175,8 @@ h2 {
   overflow-y: scroll;
   max-height: 100%;
   padding: 1rem;
+  padding-right: 2rem;
+  text-align: justify;
 }
 
 .controls {
