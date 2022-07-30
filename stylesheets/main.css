@@ -2,6 +2,10 @@
 *::before,
 *::after {
   box-sizing: border-box;
+      overflow-anchor: none !important;
+    scroll-snap-stop: normal !important;
+    overscroll-behavior: unset !important;
+    scroll-behavior: unset !important;
 }
 
 body,
@@ -177,6 +181,11 @@ h2 {
   padding: 1rem;
   padding-right: 2rem;
   text-align: justify;
+  flex-grow: 0;
+}
+
+.content .chart {
+  flex-grow: 1;
 }
 
 .controls {
